@@ -16,8 +16,15 @@ io.on("connection", (socket) => {
 	console.log("New client connected: " + socket.id);
 
 	socket.on("like", () => {
-		// socket.emit("");
-		console.log("successfully finished");
+		socket.broadcast.emit("update");
+	});
+
+	socket.on("dislike", () => {
+		socket.broadcast.emit("update");
+	});
+
+	socket.on("create_comment", () => {
+		socket.broadcast.emit("update");
 	});
 
 	socket.on("disconnect", () => {
